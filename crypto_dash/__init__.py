@@ -1,8 +1,5 @@
 from crypto_dash.model import db, CryptoName
 from crypto_dash.model import CryptoName
-# def create_app():
-#     db.init_app()
-
 from flask import Flask
 from flask import render_template
 
@@ -13,8 +10,7 @@ def create_app():
     db.init_app(app)
     @app.route('/')
     def hello():
-        crypto = CryptoName.query.all()
+        crypto = CryptoName.query.column_descriptions
         #TODO solve problem with db
-        print(crypto)
-        return f'hi Hi {crypto[0]}'
+        return str(crypto)
     return app
